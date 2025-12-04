@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LAYOUT DEL FRAGMENT DE LISTA
+
+    Este layout muestra la lista de entrenamientos en un ListView.
+    Se usa en ListaEntrenamientosFragment.
+
+    Se muestra:
+    - En PORTRAIT: Ocupa toda la pantalla
+    - En LANDSCAPE: Ocupa el panel izquierdo (30%)
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!--
+        LISTVIEW - Componente que muestra la lista con scroll
+
+        Este ListView muestra los entrenamientos usando el EntrenamientoAdapter.
+        Cada fila usa el layout "item_entrenamiento.xml"
+
+        Atributos:
+        - match_parent = ocupa todo el espacio disponible
+        - divider = línea que separa cada elemento de la lista
+        - dividerHeight = grosor de la línea divisoria (1dp = 1 píxel)
+        - @android:color/darker_gray = color gris oscuro del sistema
+
+        El ID "listViewEntrenamientos" se usa en el código Java para:
+        - Conectar el adapter
+        - Configurar el click listener
+    -->
+    <ListView
+        android:id="@+id/listViewEntrenamientos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp" />
+
+</LinearLayout>

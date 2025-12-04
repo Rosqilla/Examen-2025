@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LAYOUT DE CADA ITEM DEL LISTVIEW
+
+    Este layout define cómo se ve CADA FILA de la lista de entrenamientos.
+    Se usa en EntrenamientoAdapter.getView()
+
+    Cada fila muestra:
+    - Icono del entrenamiento (izquierda)
+    - Nombre del entrenamiento (derecha)
+
+    Este layout se "infla" (convierte de XML a Java) una vez por cada
+    entrenamiento visible en pantalla. Por ejemplo, si se ven 6 entrenamientos,
+    este layout se usa 6 veces.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:gravity="center_vertical">
+
+    <!--
+        ICONO DEL ENTRENAMIENTO
+
+        Muestra el icono pequeño a la izquierda de cada fila.
+        Por ejemplo: brújula, calendario, ubicación, agenda
+
+        - 48dp x 48dp = tamaño estándar para iconos en listas
+        - layout_marginEnd="16dp" = espacio a la derecha (separación con el texto)
+        - contentDescription = para accesibilidad
+
+        En el código Java se establece la imagen con:
+        imageView.setImageResource(entrenamiento.getIconoResId());
+    -->
+    <ImageView
+        android:id="@+id/imageViewIcono"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="Icono del entrenamiento" />
+
+    <!--
+        NOMBRE DEL ENTRENAMIENTO
+
+        Muestra el nombre a la derecha del icono.
+        Por ejemplo: "Cardio", "Fuerza", "Yoga", "Crossfit"
+
+        - layout_width="0dp" = no tiene ancho fijo
+        - layout_weight="1" = ocupa todo el espacio restante
+        - textSize="18sp" = tamaño medio-grande
+        - textStyle="bold" = negrita para destacar
+
+        En el código Java se establece el texto con:
+        textViewNombre.setText(entrenamiento.getNombre());
+    -->
+    <TextView
+        android:id="@+id/textViewNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Nombre del Entrenamiento"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    MENÚ DE LA TOOLBAR
+
+    Define los elementos (botones/iconos) que aparecen en la barra superior (Toolbar).
+    Este archivo se "infla" en MainActivity.onCreateOptionsMenu()
+
+    Actualmente tiene:
+    - Un botón "Añadir" con icono de +
+
+    Los clicks se manejan en MainActivity.onOptionsItemSelected()
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--
+        BOTÓN "AÑADIR"
+
+        Muestra un botón con icono de "más" (+) en la toolbar.
+        Al presionarlo, se abre el diálogo para añadir un nuevo entrenamiento.
+
+        Atributos:
+        - android:id = identificador único para detectar el click en el código Java
+        - android:title = texto que se muestra (o en el menú de overflow si no cabe)
+        - android:icon = icono que se muestra (ic_menu_add = icono del sistema de "+")
+        - app:showAsAction="always" = SIEMPRE se muestra en la toolbar (no en menú overflow)
+
+        Opciones de showAsAction:
+        - "always" = siempre visible (puede causar problemas si hay muchos items)
+        - "ifRoom" = se muestra si hay espacio, si no va al menú overflow (...)
+        - "never" = siempre en el menú overflow
+        - "withText" = muestra icono + texto
+
+        En el código Java se detecta el click con:
+        if (item.getItemId() == R.id.action_button) {
+            mostrarActionDialog();
+        }
+
+        CAMBIAR EL ICONO:
+        Puedes cambiar el icono por otros del sistema:
+        - @android:drawable/ic_menu_edit (lápiz)
+        - @android:drawable/ic_input_add (+ en círculo)
+        - @android:drawable/ic_menu_camera (cámara)
+        - @android:drawable/ic_menu_save (disquete)
+    -->
+    <item
+        android:id="@+id/action_button"
+        android:title="Añadir"
+        android:icon="@android:drawable/ic_menu_add"
+        app:showAsAction="always" />
+
+</menu>

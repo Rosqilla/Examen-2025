@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LAYOUT PRINCIPAL - MODO PORTRAIT (VERTICAL)
+
+    Este layout se usa cuando el dispositivo está en orientación vertical.
+    Tiene UN SOLO contenedor para mostrar UN fragment a la vez.
+
+    Estructura:
+    - LinearLayout vertical (contenedor principal)
+    - Toolbar (barra superior con botón "Añadir")
+    - FrameLayout (contenedor para fragments)
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--
+        TOOLBAR - Barra superior de la aplicación
+
+        - Muestra el título de la app
+        - Contiene el botón "Añadir" (definido en main_menu.xml)
+        - ?attr/actionBarSize = altura estándar de una ActionBar
+        - ?attr/colorPrimary = color primario del tema
+        - elevation = sombra para dar efecto de profundidad
+    -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+    <!--
+        CONTENEDOR DE FRAGMENTS - Modo Portrait
+
+        Este FrameLayout actúa como contenedor para UN SOLO fragment a la vez.
+
+        En portrait puede mostrar:
+        - ListaEntrenamientosFragment (la lista completa)
+        - DetalleEntrenamientoFragment (los detalles de uno, reemplazando la lista)
+
+        match_parent = ocupa todo el espacio disponible (pantalla completa)
+    -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

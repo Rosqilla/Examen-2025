@@ -1,0 +1,65 @@
+<!--
+    ARCHIVO DE RECURSOS DE TEXTO (STRINGS)
+
+    Este archivo almacena todos los textos que usa la aplicación.
+
+    VENTAJAS de usar strings.xml en lugar de textos directos en el código:
+    1. Fácil traducción a otros idiomas (crear strings-es.xml, strings-en.xml, etc.)
+    2. Cambiar textos sin modificar código Java
+    3. Reutilizar el mismo texto en múltiples lugares
+    4. Centralizar todos los textos en un solo lugar
+
+    Para usar un string en XML:
+    android:text="@string/app_name"
+
+    Para usar un string en Java:
+    String nombre = getString(R.string.app_name);
+-->
+<resources>
+    <!--
+        NOMBRE DE LA APLICACIÓN
+
+        Este texto aparece:
+        - En el título de la aplicación
+        - En la lista de aplicaciones del dispositivo
+        - En el icono de la app
+
+        Se define en AndroidManifest.xml con:
+        android:label="@string/app_name"
+    -->
+    <string name="app_name">Entrenamiento</string>
+
+    <!--
+        ARRAY DE DIFICULTADES PARA EL SPINNER
+
+        Define las opciones que aparecen en el Spinner (lista desplegable)
+        del diálogo de nuevo entrenamiento.
+
+        Opciones disponibles:
+        - Baja (para entrenamientos suaves como Yoga)
+        - Media (para entrenamientos moderados como Cardio)
+        - Alta (para entrenamientos intensos como Crossfit)
+
+        Se usa en el código Java con:
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(
+            context,
+            R.array.dificultades,  // <- Este es el ID del array
+            android.R.layout.simple_spinner_item
+        );
+        spinnerDificultad.setAdapter(adapter);
+
+        Para AÑADIR MÁS OPCIONES:
+        <item>Muy Alta</item>
+        <item>Principiante</item>
+
+        Para CAMBIAR LOS NOMBRES:
+        <item>Fácil</item>  (en lugar de "Baja")
+        <item>Normal</item> (en lugar de "Media")
+        <item>Difícil</item> (en lugar de "Alta")
+    -->
+    <string-array name="dificultades">
+        <item>Baja</item>
+        <item>Media</item>
+        <item>Alta</item>
+    </string-array>
+</resources>

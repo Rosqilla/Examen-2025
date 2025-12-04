@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LAYOUT DEL DIÁLOGO COMPLETO DE NUEVO ENTRENAMIENTO
+
+    Este es un diálogo alternativo más completo con TODOS los campos.
+    Se usa en NuevoEntrenamientoDialogFragment (si decides usarlo).
+
+    Contiene:
+    - Campo "Nombre"
+    - Campo "Descripción" (multilínea)
+    - Campo "Duración"
+    - Spinner "Dificultad" (lista desplegable: Baja, Media, Alta)
+
+    NOTA: En la app actual se usa dialog_action.xml (más simple),
+    pero este archivo está disponible si quieres usar el diálogo completo.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--
+        CONTENEDOR PRINCIPAL CON SCROLL
+
+        ScrollView permite hacer scroll si el diálogo es muy largo
+        (útil en pantallas pequeñas o con teclado visible)
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- ========== CAMPO NOMBRE ========== -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre del Entrenamiento"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+
+        <!--
+            Campo para el nombre del entrenamiento
+            Ejemplo: "Cardio Intenso", "Fuerza Total"
+        -->
+        <EditText
+            android:id="@+id/editTextNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ej: Cardio Intenso"
+            android:inputType="text"
+            android:layout_marginBottom="16dp" />
+
+        <!-- ========== CAMPO DESCRIPCIÓN ========== -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+
+        <!--
+            Campo multilínea para la descripción detallada
+            Ejemplo: "Entrenamiento cardiovascular de alta intensidad..."
+        -->
+        <EditText
+            android:id="@+id/editTextDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descripción detallada del entrenamiento"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:gravity="top"
+            android:layout_marginBottom="16dp" />
+
+        <!-- ========== CAMPO DURACIÓN ========== -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Duración"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+
+        <!--
+            Campo para la duración del entrenamiento
+            Ejemplo: "45 minutos", "1 hora"
+        -->
+        <EditText
+            android:id="@+id/editTextDuracion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ej: 45 minutos"
+            android:inputType="text"
+            android:layout_marginBottom="16dp" />
+
+        <!-- ========== SPINNER DIFICULTAD ========== -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dificultad"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+
+        <!--
+            SPINNER - Lista desplegable para seleccionar la dificultad
+
+            Muestra las opciones: Baja, Media, Alta
+            Las opciones están definidas en res/values/strings.xml
+            en el array "dificultades"
+
+            En el código Java se configura con:
+            ArrayAdapter adapter = ArrayAdapter.createFromResource(
+                context, R.array.dificultades, android.R.layout.simple_spinner_item);
+            spinnerDificultad.setAdapter(adapter);
+
+            Y se obtiene el valor seleccionado con:
+            String dificultad = spinnerDificultad.getSelectedItem().toString();
+        -->
+        <Spinner
+            android:id="@+id/spinnerDificultad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+
+</ScrollView>

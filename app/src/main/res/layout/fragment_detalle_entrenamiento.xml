@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LAYOUT DEL FRAGMENT DE DETALLES
+
+    Muestra los detalles completos de un entrenamiento seleccionado:
+    - Icono grande
+    - Nombre del entrenamiento
+    - Duración y dificultad
+    - Título "Ejercicios:"
+    - Descripción (lista de ejercicios)
+
+    Se usa en DetalleEntrenamientoFragment.
+
+    Se muestra:
+    - En PORTRAIT: Ocupa toda la pantalla (cuando haces click en un entrenamiento)
+    - En LANDSCAPE: Ocupa el panel derecho (70%)
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+    <!--
+        CONTENEDOR PRINCIPAL
+
+        LinearLayout vertical = los elementos se apilan uno debajo del otro
+        gravity="center_horizontal" = centra todo horizontalmente
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!--
+            ICONO DEL ENTRENAMIENTO
+
+            Muestra el icono grande del entrenamiento (brújula, calendario, etc.)
+
+            - 100dp x 100dp = tamaño fijo de 100 píxeles
+            - marginTop/Bottom = espaciado arriba y abajo
+            - contentDescription = para accesibilidad (lectores de pantalla)
+        -->
+        <ImageView
+            android:id="@+id/imageViewDetalleIcono"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="Icono del entrenamiento" />
+
+        <!--
+            NOMBRE DEL ENTRENAMIENTO
+
+            Muestra el nombre en grande y centrado (ej: "Cardio", "Fuerza")
+
+            - textSize="28sp" = tamaño de texto grande (sp = escalable según preferencias del usuario)
+            - textStyle="bold" = negrita
+            - gravity="center" = centrar el texto dentro del TextView
+        -->
+        <TextView
+            android:id="@+id/textViewDetalleNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre del Entrenamiento"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <!--
+            CONTENEDOR PARA DURACIÓN Y DIFICULTAD EN UNA LÍNEA
+
+            LinearLayout horizontal = muestra duración y dificultad uno al lado del otro
+            gravity="center" = centra ambos elementos horizontalmente
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="24dp">
+
+            <!--
+                DURACIÓN DEL ENTRENAMIENTO
+
+                Muestra texto como: "Duración: 60 minutos"
+
+                - wrap_content = el ancho se ajusta al contenido
+                - layout_marginEnd="16dp" = espacio a la derecha (para separar de "Dificultad")
+                - darker_gray = color gris oscuro para texto secundario
+            -->
+            <TextView
+                android:id="@+id/textViewDetalleDuracion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duración: 45 min"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginEnd="16dp" />
+
+            <!--
+                DIFICULTAD DEL ENTRENAMIENTO
+
+                Muestra texto como: "Dificultad: Alta"
+            -->
+            <TextView
+                android:id="@+id/textViewDetalleDificultad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dificultad: Alta"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray" />
+
+        </LinearLayout>
+
+        <!--
+            TÍTULO "EJERCICIOS:"
+
+            Encabezado que indica la sección de ejercicios
+
+            - textSize="20sp" = tamaño medio-grande
+            - textStyle="bold" = negrita para destacar
+        -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ejercicios:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="12dp" />
+
+        <!--
+            DESCRIPCIÓN / LISTA DE EJERCICIOS
+
+            Muestra el texto completo con los ejercicios del entrenamiento.
+            Por ejemplo: "Correr 30min, Bicicleta 20min, Saltar cuerda 10min"
+
+            - lineSpacingExtra="4dp" = espacio extra entre líneas (para mejor legibilidad)
+
+            Este TextView se rellena desde el código Java con:
+            textViewDescripcion.setText(entrenamiento.getDescripcion());
+        -->
+        <TextView
+            android:id="@+id/textViewDetalleDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción del entrenamiento"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:lineSpacingExtra="4dp" />
+
+    </LinearLayout>
+
+</ScrollView>

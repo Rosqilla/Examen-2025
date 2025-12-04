@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LAYOUT PRINCIPAL - MODO LANDSCAPE (HORIZONTAL)
+
+    Este layout se usa cuando el dispositivo está en orientación horizontal.
+    Tiene DOS contenedores para mostrar DOS fragments simultáneamente.
+
+    Estructura:
+    - LinearLayout vertical (contenedor principal)
+    - Toolbar (barra superior)
+    - LinearLayout horizontal (contiene los 2 panels)
+      - FrameLayout izquierdo (30% - lista)
+      - FrameLayout derecho (70% - detalles)
+
+    Este archivo está en la carpeta "layout-land" para que Android
+    lo use automáticamente cuando el dispositivo esté horizontal.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--
+        TOOLBAR - Barra superior (igual que en portrait)
+        Muestra el título y el botón "Añadir"
+    -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+    <!--
+        CONTENEDOR HORIZONTAL - Divide la pantalla en 2 paneles
+
+        orientation="horizontal" = los elementos se colocan uno al lado del otro
+        baselineAligned="false" = mejora el rendimiento (no alinea baselines)
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <!--
+            PANEL IZQUIERDO - LISTA (30% de la pantalla)
+
+            Aquí se muestra ListaEntrenamientosFragment con la lista de entrenamientos.
+
+            - layout_width="0dp" = no tiene ancho fijo, se calcula con weight
+            - layout_weight="1" = ocupa 1 parte de 3 (1+2=3) = 33% ≈ 30%
+            - Este panel SIEMPRE está visible en landscape
+        -->
+        <FrameLayout
+            android:id="@+id/fragment_lista"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <!--
+            PANEL DERECHO - DETALLES (70% de la pantalla)
+
+            Aquí se muestra DetalleEntrenamientoFragment con los detalles del entrenamiento seleccionado.
+
+            - layout_width="0dp" = no tiene ancho fijo, se calcula con weight
+            - layout_weight="2" = ocupa 2 partes de 3 (1+2=3) = 66% ≈ 70%
+            - Este panel se actualiza cuando haces click en un entrenamiento
+
+            PROPORCIÓN: 1:2 significa 30%-70%
+            Para cambiar la proporción:
+            - 1:1 = 50%-50% (mismo tamaño)
+            - 1:3 = 25%-75% (lista más pequeña)
+        -->
+        <FrameLayout
+            android:id="@+id/fragment_detalle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
+    </LinearLayout>
+
+</LinearLayout>

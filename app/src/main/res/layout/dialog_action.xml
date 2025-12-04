@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LAYOUT DEL DIÁLOGO PARA AÑADIR ENTRENAMIENTO
+
+    Este layout define el contenido del diálogo que se muestra cuando
+    el usuario presiona el botón "Añadir" en la toolbar.
+
+    Se usa en ActionDialogFragment.
+
+    Contiene:
+    - Campo "Tipo" (para el nombre del entrenamiento)
+    - Campo "Ejercicios" (para la descripción multilínea)
+    - Los botones "Save" y "Cancel" se añaden automáticamente por AlertDialog
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!--
+        ETIQUETA "TIPO"
+
+        TextView que muestra el texto "Tipo" encima del campo de entrada.
+
+        - textStyle="bold" = negrita para destacar la etiqueta
+        - textSize="16sp" = tamaño medio
+    -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tipo"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black" />
+
+    <!--
+        CAMPO DE ENTRADA "TIPO"
+
+        EditText donde el usuario escribe el nombre/tipo del entrenamiento.
+        Por ejemplo: "Pilates", "Natación", "Running"
+
+        - hint = texto que aparece cuando está vacío (texto guía)
+        - inputType="text" = teclado normal de texto
+        - layout_marginBottom = espacio debajo antes del siguiente elemento
+
+        En el código Java se valida y se obtiene el texto con:
+        String tipo = editTextTipo.getText().toString().trim();
+    -->
+    <EditText
+        android:id="@+id/editTextTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ej: Cardio, Fuerza, Flexibilidad..."
+        android:inputType="text"
+        android:layout_marginBottom="16dp" />
+
+    <!--
+        ETIQUETA "EJERCICIOS"
+    -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ejercicios"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black" />
+
+    <!--
+        CAMPO DE ENTRADA "EJERCICIOS"
+
+        EditText multilínea donde el usuario escribe los ejercicios.
+        Por ejemplo: "Plancha 1min, Abdominales 3x15, Estiramientos"
+
+        - inputType="textMultiLine" = permite múltiples líneas, Enter crea nueva línea
+        - minLines="3" = muestra mínimo 3 líneas de altura
+        - gravity="top" = el cursor y texto empiezan arriba (en lugar del centro)
+
+        En el código Java se obtiene el texto con:
+        String ejercicios = editTextEjercicios.getText().toString().trim();
+    -->
+    <EditText
+        android:id="@+id/editTextEjercicios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ej: Correr, saltar, flexiones..."
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:gravity="top"
+        android:layout_marginBottom="16dp" />
+
+</LinearLayout>
